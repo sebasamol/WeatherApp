@@ -5,9 +5,7 @@ import styles from "./page.module.css";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Link href="/">Home</Link>
-      <Link href="/pages/poznan">Poznań</Link>
-      <Link href="/pages/miedzyrzecz">Międzyrzecz</Link>
+      Home page
     </main>
   );
 }

@@ -1,0 +1,22 @@
+.main{
+
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    
+    
+}
+.description{
+    display: flex;
+    
+}
+.navigation{
+    display: flex;
+    flex-direction: row;
+    margin: 15px 15px 0px 0px;
+    padding: 5px;
+    gap: 10px;
+    
+}
