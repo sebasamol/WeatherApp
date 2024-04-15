@@ -1,13 +1,16 @@
 :root {
-  --main-bg-color: ;
-  
-
+  --border-radius: 15px;
+  --button-height: 50px;
+  --button-width: 350px;
+  --input-height: 350px;
+  --input-width: 50px;
+  --form-hover: #6d66beb6;
 
 }
 html{
-  background: #1D3751;
-  background: radial-gradient(at right bottom, #1D3751, #561D52);
-  background-repeat: no-repeat;
+  background: #6D66BE;
+  background: linear-gradient(135deg, #6D66BE, #2C2735);
+
   background-attachment: fixed;
 }
 

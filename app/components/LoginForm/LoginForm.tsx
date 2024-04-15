@@ -2,13 +2,32 @@ import React from "react";
 import Image from "next/image";
 import styles from './LoginForm.module.css'
 
-function InputData() {
+interface InputProps {
+    name: string,
+    type: string,
+    placeholder: string,
+}
+function InputData({ name, type, placeholder}: InputProps) {
+    return (
+        <div className={styles.input_group}>
+            <input className={styles.input} type={type} placeholder={placeholder} required={true} ></input>
+            <label className={styles.label}>{name}</label>
+        </div>
+
+
+
+    )
+}
+
+
+function LoginButton() {
     return (
         <>
-            <input style={{boxSizing:'border-box'}}/>
+            <button className={styles.button} type="submit">Zaloguj</button>
         </>
     )
 }
+
 
 export default function LoginForm() {
     return (
@@ -22,12 +41,14 @@ export default function LoginForm() {
                 />
                 <p>Strona logowania</p>
             </div>
-            <div className={styles.form}>
-                <form >
-                    <InputData />
-                    <InputData />
-                    <button type="submit">Zaloguj</button>
+            <div className={styles.form_container}>
+                <form className={styles.form_data}>
+                    <InputData name='Nazwa użytkownika' type='text' placeholder=''/>
+                    <InputData name='Hasło' type='text' placeholder=''/>
+                    
+
                 </form>
+                
             </div>
         </div>
 
