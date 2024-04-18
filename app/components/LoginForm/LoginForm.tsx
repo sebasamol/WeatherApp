@@ -7,7 +7,7 @@ interface InputProps {
     type: string,
     placeholder: string,
 }
-function InputData({ name, type, placeholder}: InputProps) {
+function InputData({ name, type, placeholder }: InputProps) {
     return (
         <div className={styles.input_group}>
             <input className={styles.input} type={type} placeholder={placeholder} required={true} ></input>
@@ -32,24 +32,26 @@ function LoginButton() {
 export default function LoginForm() {
     return (
         <div className={styles.container}>
-            <div className={styles.description}>
-                <Image
-                    src={'/weather-station.png'}
-                    width={64}
-                    height={64}
-                    alt="Weather station"
-                />
-                <p>Strona logowania</p>
-            </div>
-            <div className={styles.form_container}>
-                <form className={styles.form_data}>
-                    <InputData name='Nazwa użytkownika' type='text' placeholder=''/>
-                    <InputData name='Hasło' type='password' placeholder=''/>
-                    <LoginButton/>
+            <main className={styles.main}>
+                <div className={styles.description}>
+                    <Image
+                        src={'/weather-station.png'}
+                        width={64}
+                        height={64}
+                        alt="Weather station"
+                    />
+                    <p>Strona logowania</p>
+                </div>
+                <div className={styles.form_container}>
+                    <form className={styles.form_data}>
+                        <InputData name='Nazwa użytkownika' type='text' placeholder='' />
+                        <InputData name='Hasło' type='password' placeholder='' />
+                        <LoginButton />
 
-                </form>
-                
-            </div>
+                    </form>
+
+                </div>
+            </main>
         </div>
 
     )

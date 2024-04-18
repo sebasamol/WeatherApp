@@ -6,6 +6,11 @@
   --input-width: 350px;
   --form-hover: rgba(1, 247, 255, 0.509);
 
+  /*smaller devices */
+  --input-height-sm-dev: 40px;
+  --input-width-sm-dev: 300px;
+  --button-height-sm-dev: 40px;
+  --button-width-sm-dev: 300px;
 
 }
 
@@ -29,7 +34,7 @@ html {
 
 
 body {
-
+  max-height: 100vw;
   max-width: 100vw;
   /* overflow-x: hidden; */
 }
