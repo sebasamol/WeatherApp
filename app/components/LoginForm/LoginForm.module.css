@@ -5,12 +5,12 @@
     transform: translate(-50%, -50%);
     height: 400px;
     width: 400px;
-    border: 1px solid black;
 
 }
 
 .description {
-    width: 300px;
+    width: 350px;
+    margin: auto;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -18,18 +18,22 @@
 }
 
 .description p {
-    margin-left: 10px;
-    font-size: 24px;
-    opacity: 0.95;
-    color: white;
+    margin-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    word-spacing: -1px;
+    color: #ffff;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: uppercase;
 }
 
 .form_container {
-    /* display: inline-block;
-    width: 360px;
-    margin-top: 35px; */
-    
-    width: 360px;
+    margin: auto;
+    width: 400px;
     margin-top: 35px;
 }
 
@@ -39,50 +43,62 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    
+
 }
 
 /* components */
-.input_group{
+.input_group {
     position: relative;
-    width: 250px;
+
 }
-.input_group input{
-    width: 100%;
+
+.input_group input {
+    width: var(--input-width);
+    height: var(--input-height);
     padding: 10px;
-    border: 1px solid black;
-    background-color: #1d2b3a;
+    border: 1px solid rgba(255, 255, 255, 0.597);
+    border-radius: var(--border-radius);
+    background: transparent;
     outline: none;
     color: #fff;
-    background: transparent;
+
 }
-.input_group label{
+
+.input_group label {
     position: absolute;
-    left: 0;
+    left: 5px;
+    top: 18px;
     pointer-events: none;
     text-transform: uppercase;
     transition: 0.5s;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.565);
+
 }
 
-.input_group input:focus ~ label,
-.input_group input:valid ~ label{
-    color: #00dfc4;
-    transform: translateX(10px) translateY(-7px);
-    font-size: 0.65em;
+.input_group input:focus~label,
+.input_group input:valid~label {
+    transform: translateX(5px) translateY(-23px);
+    font-size: 0.55em;
     padding: 0 10px;
+    background: #1b2b3a;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: rgb(1, 247, 255);
+    letter-spacing: 0.2em;
 
 }
 
 
-/* .button {
+.button {
     height: var(--button-height);
     width: var(--button-width);
     border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.597);
     box-sizing: border-box;
-    background: #6d66be40;
+    background: transparent;
     color: white;
     margin-top: 5px;
-    border: none;
     font-size: 18px;
 
 }
@@ -90,6 +106,7 @@
 .button:hover {
     background: var(--form-hover);
     transition: 0.6s;
+    opacity: 0.85;
 
 
-} */
+}

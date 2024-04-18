@@ -44,8 +44,8 @@ export default function LoginForm() {
             <div className={styles.form_container}>
                 <form className={styles.form_data}>
                     <InputData name='Nazwa użytkownika' type='text' placeholder=''/>
-                    <InputData name='Hasło' type='text' placeholder=''/>
-                    
+                    <InputData name='Hasło' type='password' placeholder=''/>
+                    <LoginButton/>
 
                 </form>
                 
