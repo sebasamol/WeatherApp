@@ -31,20 +31,22 @@ function LoginButton() {
 
 export default function LoginForm() {
 
-    async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+        
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         const response = await fetch('/pages/api/submit', {
             method: 'POST',
             body: formData,
-
         })
 
         // Handle response if necessary
         //const data = await response.json()
         // ..
         console.log(response)
+        console.log(formData)
     }
+   
 
     return (
         <div className={styles.container}>
@@ -59,7 +61,7 @@ export default function LoginForm() {
                     <p>Strona logowania</p>
                 </div>
                 <div className={styles.form_container}>
-                    <form className={styles.form_data} onSubmit={onSubmit}>
+                    <form className={styles.form_data} onSubmit={handleSubmit}>
                         <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
                         <InputData name='Hasło' type='password' placeholder='' id='password' />
                         <LoginButton />
