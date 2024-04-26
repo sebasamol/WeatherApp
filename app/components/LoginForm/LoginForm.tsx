@@ -1,4 +1,6 @@
+'use client'
 import React from "react";
+import { FormEvent } from "react";
 import Image from "next/image";
 import styles from './LoginForm.module.css'
 
@@ -6,21 +8,18 @@ interface InputProps {
     name: string,
     type: string,
     placeholder: string,
+    id: string,
 }
-function InputData({ name, type, placeholder }: InputProps) {
+function InputData({ name, type, placeholder, id }: InputProps) {
     return (
         <div className={styles.input_group}>
-            <input className={styles.input} type={type} placeholder={placeholder} required={true} ></input>
+            <input className={styles.input} type={type} placeholder={placeholder} required={true} name={id}></input>
             <label className={styles.label}>{name}</label>
         </div>
-
-
-
     )
 }
-
-
 function LoginButton() {
+
     return (
         <>
             <button className={styles.button} type="submit">Zaloguj</button>
@@ -29,7 +28,24 @@ function LoginButton() {
 }
 
 
+
 export default function LoginForm() {
+
+    async function onSubmit(event: FormEvent<HTMLFormElement>) {
+        event.preventDefault()
+        const formData = new FormData(event.currentTarget)
+        const response = await fetch('/pages/api/submit', {
+            method: 'POST',
+            body: formData,
+
+        })
+
+        // Handle response if necessary
+        //const data = await response.json()
+        // ..
+        console.log(response)
+    }
+
     return (
         <div className={styles.container}>
             <main className={styles.main}>
@@ -43,9 +59,9 @@ export default function LoginForm() {
                     <p>Strona logowania</p>
                 </div>
                 <div className={styles.form_container}>
-                    <form className={styles.form_data}>
-                        <InputData name='Nazwa użytkownika' type='text' placeholder='' />
-                        <InputData name='Hasło' type='password' placeholder='' />
+                    <form className={styles.form_data} onSubmit={onSubmit}>
+                        <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
+                        <InputData name='Hasło' type='password' placeholder='' id='password' />
                         <LoginButton />
 
                     </form>
@@ -56,3 +72,4 @@ export default function LoginForm() {
 
     )
 }
+
