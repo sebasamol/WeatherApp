@@ -1,6 +1,8 @@
 'use client'
 import React from "react";
 import { FormEvent } from "react";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './LoginForm.module.css'
 
@@ -30,9 +32,10 @@ function LoginButton() {
 
 
 export default function LoginForm() {
+    const router = useRouter()
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        
+
         event.preventDefault()
         const formData = new FormData(event.currentTarget)
         const response = await fetch('/pages/api/submit', {
@@ -40,13 +43,16 @@ export default function LoginForm() {
             body: formData,
         })
 
-        // Handle response if necessary
-        //const data = await response.json()
-        // ..
         console.log(response)
-        console.log(formData)
+        //const data = await response.json()
+        if (response.status == 200) {
+            router.push('/')
+        }
+        //router.push('/')
+        //console.log(formData)
+
     }
-   
+
 
     return (
         <div className={styles.container}>
