@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose'
+import mongoose from 'mongoose';
 
 interface IUser{
     login: string;
@@ -10,4 +11,6 @@ const userSchema = new Schema<IUser> ({
     pwd: {type: String, required: true}
 });
 
-export const User = model<IUser>('User', userSchema)
+
+//export const User = mongoose.model<IUser>('User', userSchema)
+export const Users = mongoose.models.Users || mongoose.model('Users', userSchema);

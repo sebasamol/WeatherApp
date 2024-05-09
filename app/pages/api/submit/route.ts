@@ -1,13 +1,43 @@
 'use server'
-import onSubmit from '@/app/utility/submit';
-import { redirect, useRouter } from 'next/navigation'
+
 import { NextRequest, NextResponse } from 'next/server'
 import { connectDB } from '../../lib/connectDB';
+import { Users } from '@/app/models/loginschema';
+
 export async function POST(request: NextRequest, response: NextResponse) {
+
   const data = await request.formData();
-  console.log(data)
+  var login = data.get('login')
+  var password = data.get('password')
+
+  console.log(login)
+  console.log(password)
   connectDB();
-  //console.log(data)
-  //redirect('/')
-  return NextResponse.redirect('http://localhost:3000/pages/poznan')
+
+
+  const dbfetch = await Users.exists({ login: data.get('login'), pwd: data.get('password') })
+
+  // if (dbfetch) {
+  //   NextResponse.json({
+  //     message: "Success"
+  //   }, {
+  //     status: 200,
+  //   })
+  // }
+    if(dbfetch){
+      console.log('Succes login')
+      return NextResponse.json({
+        message: "Success login"
+      }, {
+        status: 200,
+      })
+    } else{
+      return NextResponse.json({
+        message: "Login failed"
+      }, {
+        status: 400,
+      })
+    }
+    
+  
 }

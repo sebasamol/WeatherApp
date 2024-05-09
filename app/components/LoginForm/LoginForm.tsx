@@ -42,13 +42,11 @@ export default function LoginForm() {
             body: formData,
         })
 
-        console.log(response)
         //const data = await response.json()
         if (response.status == 200) {
             router.push('/')
         }
-        //router.push('/')
-        //console.log(formData)
+        
 
     }
 
