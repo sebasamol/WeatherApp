@@ -17,27 +17,21 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
   const dbfetch = await Users.exists({ login: data.get('login'), pwd: data.get('password') })
 
-  // if (dbfetch) {
-  //   NextResponse.json({
-  //     message: "Success"
-  //   }, {
-  //     status: 200,
-  //   })
-  // }
-    if(dbfetch){
-      console.log('Succes login')
-      return NextResponse.json({
-        message: "Success login"
-      }, {
-        status: 200,
-      })
-    } else{
-      return NextResponse.json({
-        message: "Login failed"
-      }, {
-        status: 400,
-      })
-    }
+  if (dbfetch) {
+    console.log('Succes login')
+    return NextResponse.json({
+      message: "Success login"
+    }, {
+      status: 200,
+    })
+  } else {
+    return NextResponse.json({
+      message: "Login failed"
+    }, {
+      status: 400,
+    })
     
-  
+  }
+
+
 }

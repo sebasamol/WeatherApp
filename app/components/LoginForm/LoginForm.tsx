@@ -1,5 +1,5 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { FormEvent } from "react";
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -12,6 +12,7 @@ interface InputProps {
     placeholder: string,
     id: string,
 }
+
 function InputData({ name, type, placeholder, id }: InputProps) {
     return (
         <div className={styles.input_group}>
@@ -20,22 +21,16 @@ function InputData({ name, type, placeholder, id }: InputProps) {
         </div>
     )
 }
-function LoginButton() {
-
-    return (
-        <>
-            <button className={styles.button} type="submit">Zaloguj</button>
-        </>
-    )
-}
 
 
 export default function LoginForm() {
     const router = useRouter()
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 
         event.preventDefault()
+        setIsLoading(true)
         const formData = new FormData(event.currentTarget)
         const response = await fetch('/pages/api/submit', {
             method: 'POST',
@@ -46,7 +41,8 @@ export default function LoginForm() {
         if (response.status == 200) {
             router.push('/')
         }
-        
+        console.log(response)
+
 
     }
 
@@ -67,7 +63,8 @@ export default function LoginForm() {
                     <form className={styles.form_data} onSubmit={handleSubmit}>
                         <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
                         <InputData name='Hasło' type='password' placeholder='' id='password' />
-                        <LoginButton />
+                        {/* <LoginButton /> */}
+                        <button className={styles.button}type="submit" disabled={isLoading}>{isLoading ? 'Logowanie...' : 'Zaloguj'}</button>
 
                     </form>
 
