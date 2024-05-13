@@ -1,10 +1,10 @@
 'use client'
 import React, { useState } from "react";
 import { FormEvent } from "react";
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './LoginForm.module.css'
+import next from "next";
 
 interface InputProps {
     name: string,
@@ -26,23 +26,34 @@ function InputData({ name, type, placeholder, id }: InputProps) {
 export default function LoginForm() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 
         event.preventDefault()
         setIsLoading(true)
-        const formData = new FormData(event.currentTarget)
-        const response = await fetch('/pages/api/submit', {
-            method: 'POST',
-            body: formData,
-        })
+        setError(null)
 
-        //const data = await response.json()
-        if (response.status == 200) {
-            router.push('/')
+        try {
+            const formData = new FormData(event.currentTarget)
+            const response = await fetch('/pages/api/submit', {
+                method: 'POST',
+                body: formData,
+            })
+
+            if (response.status == 200) {
+                router.push('/')
+            } else {
+                setError('Nieprawidłowa nazwa użytkownika lub hasło')
+
+            }
+
+        } catch (error) {
+            console.log(error)
+
+        } finally {
+            setIsLoading(false)
         }
-        console.log(response)
-
 
     }
 
@@ -63,13 +74,23 @@ export default function LoginForm() {
                     <form className={styles.form_data} onSubmit={handleSubmit}>
                         <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
                         <InputData name='Hasło' type='password' placeholder='' id='password' />
-                        {/* <LoginButton /> */}
-                        <button className={styles.button}type="submit" disabled={isLoading}>{isLoading ? 'Logowanie...' : 'Zaloguj'}</button>
+                        {error && <div className={styles.display_error}>
+                            <Image 
+                                src="/error.png"
+                                width={18}
+                                height={18}
+                                alt="Weather station"
+                                
+                            />
+                            <div className={styles.error}>{error}</div></div>}
+                        <button className={styles.button} type="submit" disabled={isLoading}>
+                            {isLoading ? 'Logowanie...' : 'Zaloguj'}</button>
 
                     </form>
 
                 </div>
             </main>
+
         </div>
 
     )

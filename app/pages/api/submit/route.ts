@@ -10,8 +10,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
   var login = data.get('login')
   var password = data.get('password')
 
-  console.log(login)
-  console.log(password)
   connectDB();
 
 
