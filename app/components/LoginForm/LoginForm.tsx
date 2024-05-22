@@ -75,17 +75,18 @@ export default function LoginForm() {
                         <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
                         <InputData name='Hasło' type='password' placeholder='' id='password' />
                         {error && <div className={styles.display_error}>
-                            <Image 
+                            <Image
                                 src="/error.png"
                                 width={18}
                                 height={18}
                                 alt="Weather station"
-                                
+
                             />
                             <div className={styles.error}>{error}</div></div>}
+                        <div className={styles.checkbox}> <input type="checkbox"></input><p>Zapamiętaj mnie</p></div>
+
                         <button className={styles.button} type="submit" disabled={isLoading}>
                             {isLoading ? 'Logowanie...' : 'Zaloguj'}</button>
-
                     </form>
 
                 </div>

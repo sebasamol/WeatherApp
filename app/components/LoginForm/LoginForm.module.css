@@ -7,7 +7,7 @@
 
 .main {
     position: absolute;
-    top: 20%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -125,6 +125,20 @@
     
     padding: 5px;
     
+}
+.checkbox{
+    display: flex;
+    width: var(--button-width);
+    justify-content: flex-start;
+    padding: 5px;
+
+    
+    
+}
+.checkbox p{
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.565);
+    margin-left: 5px;
 }
 .error{
     margin-left: 5px;
