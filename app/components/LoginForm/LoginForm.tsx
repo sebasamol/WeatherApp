@@ -4,7 +4,6 @@ import { FormEvent } from "react";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './LoginForm.module.css'
-import next from "next";
 
 interface InputProps {
     name: string,
