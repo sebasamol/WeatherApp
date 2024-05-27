@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Form test should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <main
+      class="main"
+    >
+      <div
+        class="description"
+      >
+        <img
+          alt="Weather station"
+          data-nimg="1"
+          decoding="async"
+          height="64"
+          loading="lazy"
+          src="/_next/image?url=%2Fweather-station.png&w=128&q=75"
+          srcset="/_next/image?url=%2Fweather-station.png&w=64&q=75 1x, /_next/image?url=%2Fweather-station.png&w=128&q=75 2x"
+          style="color: transparent;"
+          width="64"
+        />
+        <p>
+          Strona logowania
+        </p>
+      </div>
+      <div
+        class="form_container"
+      >
+        <form
+          class="form_data"
+        >
+          <div
+            class="input_group"
+          >
+            <input
+              class="input"
+              name="login"
+              placeholder=""
+              required=""
+              type="text"
+            />
+            <label
+              class="label"
+            >
+              Nazwa użytkownika
+            </label>
+          </div>
+          <div
+            class="input_group"
+          >
+            <input
+              class="input"
+              name="password"
+              placeholder=""
+              required=""
+              type="password"
+            />
+            <label
+              class="label"
+            >
+              Hasło
+            </label>
+          </div>
+          <button
+            class="button"
+            type="submit"
+          >
+            Zaloguj
+          </button>
+        </form>
+      </div>
+    </main>
+  </div>
+</DocumentFragment>
+`;
