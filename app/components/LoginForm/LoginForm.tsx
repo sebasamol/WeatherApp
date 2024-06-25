@@ -5,27 +5,13 @@ import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import styles from './LoginForm.module.css'
 
-interface InputProps {
-    name: string,
-    type: string,
-    placeholder: string,
-    id: string,
-}
-
-function InputData({ name, type, placeholder, id }: InputProps) {
-    return (
-        <div className={styles.input_group}>
-            <input className={styles.input} type={type} placeholder={placeholder} required={true} name={id}></input>
-            <label className={styles.label}>{name}</label>
-        </div>
-    )
-}
-
 
 export default function LoginForm() {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState<string | null>(null)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 
@@ -42,6 +28,7 @@ export default function LoginForm() {
 
             if (response.status == 200) {
                 router.push('/')
+                
             } else {
                 setError('Nieprawidłowa nazwa użytkownika lub hasło')
 
@@ -49,14 +36,12 @@ export default function LoginForm() {
 
         } catch (error) {
             console.log(error)
-
+            
         } finally {
             setIsLoading(false)
         }
 
     }
-
-
     return (
         <div className={styles.container}>
             <main className={styles.main}>
@@ -71,9 +56,39 @@ export default function LoginForm() {
                 </div>
                 <div className={styles.form_container}>
                     <form className={styles.form_data} onSubmit={handleSubmit}>
-                        <InputData name='Nazwa użytkownika' type='text' placeholder='' id='login' />
-                        <InputData name='Hasło' type='password' placeholder='' id='password' />
-                        {error && <div className={styles.display_error}>
+                        {/* <InputData testID='username' name='Nazwa użytkownika' type='text' placeholder='' id='login' />
+                        <InputData testID='password' name='Hasło' type='password' placeholder='' id='password'  /> */}
+                        <div className={styles.input_group}>
+                            <input
+                                className={styles.input}
+                                id='login'
+                                name='login'
+                                type='text'
+                                data-testid="username"
+                                required={true}
+                                defaultValue={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                
+                            ></input>
+                            <label className={styles.label}>Nazwa użytkownika</label>
+
+                        </div>
+                        <div className={styles.input_group}>
+                            <input
+                                className={styles.input}
+                                id='password'
+                                name='password'
+                                type='password'
+                                data-testid="password"
+                                required={true}
+                                defaultValue={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            ></input>
+                            <label className={styles.label}>Hasło</label>
+
+                        </div>
+
+                        {error && <div className={styles.display_error} >
                             <Image
                                 src="/error.png"
                                 width={18}
@@ -81,7 +96,7 @@ export default function LoginForm() {
                                 alt="Error"
 
                             />
-                            <div className={styles.error}>{error}</div></div>}
+                            <div data-testid="error" className={styles.error} >{error}</div></div>}
 
                         <button className={styles.button} type="submit" disabled={isLoading}>
                             {isLoading ? 'Logowanie...' : 'Zaloguj'}</button>

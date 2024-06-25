@@ -7,11 +7,11 @@ import { Users } from '@/app/models/loginschema';
 export async function POST(request: NextRequest, response: NextResponse) {
 
   const data = await request.formData();
-  var login = data.get('login')
-  var password = data.get('password')
+  // var login = data.get('login')
+  // var password = data.get('password')
 
   connectDB();
-
+  
 
   const dbfetch = await Users.exists({ login: data.get('login'), pwd: data.get('password') })
 
