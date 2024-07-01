@@ -30,6 +30,7 @@ exports[`Login Form test should take a snapshot 1`] = `
         class="form_container"
       >
         <form
+          aria-label="signup-form"
           class="form_data"
         >
           <div
@@ -37,10 +38,12 @@ exports[`Login Form test should take a snapshot 1`] = `
           >
             <input
               class="input"
+              data-testid="test-username"
+              id="login"
               name="login"
-              placeholder=""
               required=""
               type="text"
+              value=""
             />
             <label
               class="label"
@@ -53,10 +56,12 @@ exports[`Login Form test should take a snapshot 1`] = `
           >
             <input
               class="input"
+              data-testid="test-password"
+              id="password"
               name="password"
-              placeholder=""
               required=""
               type="password"
+              value=""
             />
             <label
               class="label"
@@ -66,6 +71,7 @@ exports[`Login Form test should take a snapshot 1`] = `
           </div>
           <button
             class="button"
+            data-testid="test-button"
             type="submit"
           >
             Zaloguj

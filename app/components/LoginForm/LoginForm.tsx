@@ -55,19 +55,17 @@ export default function LoginForm() {
                     <p>Strona logowania</p>
                 </div>
                 <div className={styles.form_container}>
-                    <form className={styles.form_data} onSubmit={handleSubmit}>
-                        {/* <InputData testID='username' name='Nazwa użytkownika' type='text' placeholder='' id='login' />
-                        <InputData testID='password' name='Hasło' type='password' placeholder='' id='password'  /> */}
+                    <form className={styles.form_data} onSubmit={handleSubmit} aria-label="signup-form">
                         <div className={styles.input_group}>
                             <input
                                 className={styles.input}
                                 id='login'
                                 name='login'
                                 type='text'
-                                data-testid="username"
+                                data-testid="test-username"
                                 required={true}
                                 defaultValue={username}
-                                onChange={(e) => setUsername(e.target.value)}
+                                onChange={(e) => setUsername(e.target.defaultValue)}
                                 
                             ></input>
                             <label className={styles.label}>Nazwa użytkownika</label>
@@ -79,10 +77,10 @@ export default function LoginForm() {
                                 id='password'
                                 name='password'
                                 type='password'
-                                data-testid="password"
+                                data-testid="test-password"
                                 required={true}
                                 defaultValue={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.defaultValue)}
                             ></input>
                             <label className={styles.label}>Hasło</label>
 
@@ -98,7 +96,7 @@ export default function LoginForm() {
                             />
                             <div data-testid="error" className={styles.error} >{error}</div></div>}
 
-                        <button className={styles.button} type="submit" disabled={isLoading}>
+                        <button className={styles.button} data-testid='test-button'type="submit" disabled={isLoading}>
                             {isLoading ? 'Logowanie...' : 'Zaloguj'}</button>
                     </form>
 
